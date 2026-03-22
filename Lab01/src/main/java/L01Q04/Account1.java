@@ -5,6 +5,7 @@
 package L01Q04;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -27,22 +28,22 @@ public class Account1 {
         this.name =null;
         this.balance=0;
         this.dateCreated= new Date();
-        dateCreated.setTime(200000000);//set to be in the past
     }
     
-    public Account1(int id ,String name, double balance){
+    public Account1(int id ,String name, double balance,int year, int month , int day){
         this.id=id;
         this.name =name;
         this.balance=balance;//initial balance
-        dateCreated = new Date(); 
-        dateCreated.setTime(200000000);//set to be in the past
+        
+        dateCreated=setDate(year,month,day);
         //calculate interest and new balance
         Date now = new Date();
-        int months = now.getMonth()-dateCreated.getMonth();
+        int months = now.getMonth()-dateCreated.getMonth();//current-1900
         int years = now.getYear()- dateCreated.getYear();
         int totalMonths = months + (years*12);
         
-        this.balance+=(totalMonths*getMonthlyInterest());
+        double totalInterest=totalMonths*getMonthlyInterest();
+        this.balance+=totalInterest;
 
     }
     //accessor method
@@ -91,5 +92,10 @@ public class Account1 {
             System.out.println("Invalid amount. Amount cannot be negative.");
         }
     }
-
+    //0 FOR JANUARY
+    public Date setDate (int year , int month , int day){
+        Calendar cal = Calendar.getInstance();
+        cal.set(year,month, day);
+        return cal.getTime();
+    }
 }

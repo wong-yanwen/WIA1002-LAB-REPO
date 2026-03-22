@@ -10,8 +10,8 @@ package L01Q03;
  */
 public class AccountTester {
     public static void main (String [] args){
-        Account account = new Account (1122,20000);
-        Account.setAnnualInterestRate(4.5);
+        Account.setAnnualInterestRate(4.5);//must set interest first
+        Account account = new Account (1122,20000,2016,2,1);
         System.out.printf("Current balance\t: $%.2f\n",account.getBalance());
         account.withdraw(2500);
         account.deposit(3000);

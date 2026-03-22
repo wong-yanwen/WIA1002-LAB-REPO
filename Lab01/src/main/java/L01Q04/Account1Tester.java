@@ -12,8 +12,9 @@ import java.util.ArrayList;
  */
 public class Account1Tester {
     public static void main (String[] args){
-        Account1 acc1 = new Account1 (1122,"George",1000);
         Account1.setAnnualInterestRate(1.5);
+        Account1 acc1 = new Account1 (1122,"George",1000,2016,2,1);
+        
         acc1.deposit(30);
         acc1.deposit(40);
         acc1.deposit(50);

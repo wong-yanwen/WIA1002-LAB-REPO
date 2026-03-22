@@ -26,19 +26,20 @@ public class Account {
         
     }
     
-    public Account(int id , double balance){
+    public Account(int id , double balance, int year , int month , int day){
         this.id=id;
         this.balance=balance;
-        dateCreated = new Date();  
-        dateCreated.setTime(200000000);//set to be in the past
+        
+        this.dateCreated=setDate(year,month,day);
+        
         //calculate interest and new balance
         Date now = new Date();
         int months = now.getMonth()-dateCreated.getMonth();
         int years = now.getYear()- dateCreated.getYear();
         int totalMonths = months + (years*12);
         
-        this.balance+=(totalMonths*getMonthlyInterest());
-
+        double totalInterest=(totalMonths*getMonthlyInterest());
+        this.balance+=totalInterest;
     }
     //accessor method
     public int getId(){
@@ -100,6 +101,12 @@ public class Account {
         }else{
             System.out.println("Invalid amount. Amount cannot be negative.");
         }
+    }
+    //o for JANUARY
+    public Date setDate (int year , int month , int day){
+        Calendar cal = Calendar.getInstance();
+        cal.set(year,month,day);  
+        return cal.getTime();
     }
 }
 
