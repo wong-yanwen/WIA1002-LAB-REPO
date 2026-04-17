@@ -124,7 +124,7 @@ public class ArrayBag <T> implements BagInterface <T> {
     @Override
     public BagInterface<T> union(BagInterface<T> newBag) {
         if (newBag==null){
-            throw new IllegalArgumentException("Cannot ");
+            throw new IllegalArgumentException("Cannot combine null bags.");
         }
         
         ArrayBag<T> combinedBag= new ArrayBag<>();
