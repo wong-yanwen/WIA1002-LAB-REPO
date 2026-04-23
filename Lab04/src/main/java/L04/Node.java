@@ -19,5 +19,7 @@ public class Node <E> {
     
     public Node (E element){
         this.element = element;
+        //THIS LINE WAS MISSING INITIALLY 
+        this.next=null;
     }
 }

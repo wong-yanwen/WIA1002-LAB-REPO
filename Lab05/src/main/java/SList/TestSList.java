@@ -22,6 +22,9 @@ public class TestSList {
         System.out.println("");
        //3) Remove the word “Linked list” and display the removed value. 
        myList.removeInitial();
+        System.out.print("After removal: ");
+       myList.display();
+       System.out.println("");
        //4) Check if ‘difficult’ is in the list. 
         System.out.println("Contains \"difficult\": "+myList.contains("difficult"));
         //5) Clear the list

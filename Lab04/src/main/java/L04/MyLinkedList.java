@@ -60,11 +60,13 @@ public class MyLinkedList <E> {
     public E removeFirst(){
         if (size==0)return null;
         else {
-            Node <E> temp = head;
+            //change from   Node E temp to E temp
+            E temp = head.element;
             head = head.next;
             size--;
             if (head==null) tail=null;
-            return temp.element;     
+            //change from temp.element to temp
+            return temp;     
         }
     }
     //e
@@ -72,12 +74,12 @@ public class MyLinkedList <E> {
         if (size==0)
             return null;
         else if (size==1){
-            Node <E> temp= tail;
+            E temp= tail.element;
             head = tail =null;
             size=0;
-            return temp.element; 
+            return temp; 
         }else{
-            Node<E> temp=tail;
+            E temp=tail.element;
             Node<E> current=head;
             for (int i=0;i<size-2;i++){
                 current=current.next;
@@ -85,7 +87,7 @@ public class MyLinkedList <E> {
             tail=current;
             tail.next=null;
             size--;
-            return temp.element;
+            return temp;
         }
     }
     
@@ -112,6 +114,8 @@ public class MyLinkedList <E> {
     
     public boolean contains(E e){
         Node <E> current = head;
+        //or use while loop 
+        // while(current!=null)
         for (int i=0;i<size;i++){
             if (current.element.equals(e)){
                 return true;
@@ -155,6 +159,17 @@ public class MyLinkedList <E> {
     //Return the index of the last matching element in this list. Return -1 of no match
     public int lastIndexOf(E e){
         Node <E> current = head;
+        int index=0;
+        int lastIndex=-1;
+        
+        while(current!=null){
+            if (current.element.equals(e)){
+                lastIndex=index;   
+            }
+            current=current.next;
+            index++;   
+        }
+        /* Old Code
         E[] tempArray = (E[])new Object [size];
         for (int i=0;i<size;i++){
             tempArray[i]=current.element;
@@ -166,13 +181,32 @@ public class MyLinkedList <E> {
                 return i;
             }
         }
+        
         return -1;
+        */
+        
+        return lastIndex;
     }
     
     public E set(int index,E e){
         add(index,e);
         E removedElement = remove(index+1);
         return removedElement;
+        
+        /*
+        Answer from demo:
+          
+        if (index <0 || index>=size)return null;
+        Node<E> current=head;
+        for (int i=0;i<index;i++){
+            current=current.next;
+        }
+
+        E old = current.element;
+        current.element=e;
+
+        return old;
+         */
     }
     
     public void clear(){
@@ -190,6 +224,7 @@ public class MyLinkedList <E> {
         }
     }
     
+    //didnt catch answer for reverse
     public void reverse(){
         Node<E> current= head;
         E[] tempArray = (E[])new Object [size];
