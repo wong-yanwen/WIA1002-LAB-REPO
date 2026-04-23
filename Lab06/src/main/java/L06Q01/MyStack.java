@@ -5,6 +5,7 @@
 package L06Q01;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 /**
  *
@@ -19,12 +20,18 @@ public class MyStack <E>{
     }
     
     public E pop(){
+        if (this.isEmpty()){
+            throw new EmptyStackException();
+        }
         E removedItem=myStack.removeLast();
         return removedItem;
         
     }
     
     public E peek(){
+        if (this.isEmpty()){
+            throw new EmptyStackException();
+        }
         return myStack.getLast();
     }
     

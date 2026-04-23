@@ -17,6 +17,8 @@ public class L06Q04 {
     
     
     public static void main (String[] args){
+        System.out.println("================Method 1==================");
+        
         //get string from user
         Scanner sc= new Scanner (System.in);
         Stack <Character> s1 = new Stack<>();
@@ -46,6 +48,17 @@ public class L06Q04 {
         
         System.out.println(input+ " is Palindrome: "+isPalindrome);
         
+        //DEMO ANSWER
+        System.out.println("================Method 2==================");
+        String reversed = "";
+        while(!s1.isEmpty()){
+            reversed+=s1.pop();
+        }
+        if (input.equals(reversed)){
+            System.out.println("Is Palidrome");
+        }else{
+            System.out.println("Not Palidrome");
+        }
         
     }
 }

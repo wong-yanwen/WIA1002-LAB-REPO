@@ -20,13 +20,19 @@ public class TestIntMyStack {
         MyStack<Integer> stack1 = new MyStack <>();
         
         do {
-            System.out.println("Enter an integer. (-1 to Quit): ");
+            System.out.println("Enter an integer: ");
             input = sc.nextInt();
-            //b) Push the values 1 through the user entered value onto the stack
-            if (input!=-1){
-                stack1.push(input);
+            
+            if (input<=0){
+                System.out.println("Invalid Input.");
             }
-        }while(input!=-1);
+        }while(input<=0);
+        
+        //b) Push the values 1 through the user entered value onto the stack
+        for (int i=1;i<=input;i++){
+            stack1.push(i);
+        }
+                
         System.out.println(stack1);
         
         //c) Print the size of the stack.

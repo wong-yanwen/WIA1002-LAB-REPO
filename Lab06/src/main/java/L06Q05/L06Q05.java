@@ -1,5 +1,8 @@
 package L06Q05;
 
+import java.util.Scanner;
+import java.util.Stack;
+
 /**
  *
  * @author Wong Yan Wen
@@ -23,7 +26,50 @@ Problem using stacks data structure
 */
 
 public class L06Q05 {
+    //DEMO ANSWER
+    public static int N;
+    @SuppressWarnings ("uncheked")
+    public static Stack<Integer> [] tower = new Stack [4];
     
+    public static void main (String[] args){
+       Scanner sc = new Scanner (System.in);
+       tower[1]= new Stack<Integer>();
+       tower[2]= new Stack <Integer>();
+       tower[3]= new Stack<Integer>();
+       
+       //Accepting number of disk
+        System.out.println("Enter number of disks: ");
+        int num=sc.nextInt();
+        N=num;
+        
+        toh (num);
+    }
+    
+    public static void toh(int n){
+        for (int d =n ;d>0;d--){
+            tower[1].push(d);
+        }
+        display();
+        move(n,1,2,3);
+    }
+    
+    public static void move(int n, int a, int b , int c){
+        if (n>0){
+            move(n-1,a,c,b);
+            int d=tower[a].pop();
+            tower[c].push(d);
+            display();
+            move(n-1,b,a,c);
+        }
+    }
+    public static void display (){
+        System.out.println("Tower 1: "+tower[1].toString());
+        System.out.println("Tower 2: "+tower[2].toString());
+        System.out.println("Tower 3: "+tower[3].toString());
+        System.out.println("");
+    }
+    
+    /*ORIGINAL ANSWER
     public static void towerOfHanoi(int n, String from_rod, String to_rod, String helper_rod)
     {
         if (n == 1)
@@ -35,10 +81,5 @@ public class L06Q05 {
         System.out.println("Take disk " + n + " from rod " +  from_rod + " to rod " + to_rod);
         towerOfHanoi(n-1, helper_rod, to_rod, from_rod);
     }
-    
-    public static void main (String[] args){
-        int n=4;
-        towerOfHanoi(n,"A","B","C");
-    
-    }
+    */
 }
