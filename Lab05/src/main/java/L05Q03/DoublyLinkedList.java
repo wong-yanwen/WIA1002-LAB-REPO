@@ -135,14 +135,20 @@ public class DoublyLinkedList<E> {
         
     }   
     
+    //FIXED
     public void clear(){
+        head=tail=null;
+        size=0;
+       /*OLD cODE 
         Node<E> temp= head;
         int i=0;
         while(head!=null){
             removeFirst();
             i++;
         }
-        System.out.println("Successfully cleared ("+i+") nodes.");
+
+        */
+        System.out.println("Successfully cleared nodes.");
     }
     
     public int getSize(){

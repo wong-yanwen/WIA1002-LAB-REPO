@@ -23,9 +23,9 @@ public class SList <E> {
     //i Append a new element at the end of the list.
     public void appendEnd(E e){
         if (tail==null)
-            head =tail=new SNode<E> (e);
+            head =tail=new SNode<> (e);
         else{
-            tail.next = new SNode <E> (e);
+            tail.next = new SNode <> (e);
             tail=tail.next;
         }   
         size++;
@@ -57,10 +57,17 @@ public class SList <E> {
     
     //iv Empty all elements in the list and return a statement that reports that the list is empty.
     public void clear(){
+        //Answer from demo:
+        size=0;
+        head=tail=null;
+        System.out.println("List is now empty");
+        
+        /*Old Code:
         do{
             removeInitial();
         }while(head!=null);
         System.out.println("List is cleared.");
+        */
     }
     
     //v Display all values from the list in a successive order.

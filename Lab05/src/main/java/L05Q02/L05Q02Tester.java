@@ -16,7 +16,7 @@ public class L05Q02Tester {
         String input ;
         Scanner sc = new Scanner(System.in);
         
-                    
+        //DEMO ANSWER : USE DO WHILE LOOP . ASSIGN NUMBERS TO COMMAND . REPEAT UNTIL INPUT=0          
         System.out.println("Enter your student name list. Enter 'n' to end.....");
         do {
             input= sc.nextLine();
