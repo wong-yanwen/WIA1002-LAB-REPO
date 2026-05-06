@@ -25,10 +25,6 @@ public class Share {
         return this.pricePerShare;
     }
     
-    public void buyShares(int i){
-        this.numShares+=i;
-    }
-    
     public void sellShares(int i){
         this.numShares-=i;
     }
@@ -37,6 +33,4 @@ public class Share {
     public String toString(){
         return "QTY: "+this.getNumShares()+"||PRICE: "+this.getPricePerShare()+"\t";
     }
-    //capital gain 
-    //
 }
