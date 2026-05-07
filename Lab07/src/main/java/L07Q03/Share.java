@@ -31,6 +31,6 @@ public class Share {
     
     @Override
     public String toString(){
-        return "QTY: "+this.getNumShares()+"||PRICE: "+this.getPricePerShare()+"\t";
+        return "\nQTY: "+this.getNumShares()+"||PRICE: "+this.getPricePerShare();
     }
 }
