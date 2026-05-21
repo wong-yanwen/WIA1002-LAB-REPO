@@ -63,11 +63,12 @@ public class WeightGraph <T extends Comparable <T>, N extends Comparable <N>>{
     //Question 1 
     public boolean addUndirectedEdge(Vertex<T,N> source, Vertex <T,N> destination, N w){
         
-        /*Another method:
-        addDirectedEdge(source.vertexInfo, destinationVertex.vertexInfo, w);
-        addDirectedEdge(destinationVertex.vertexInfo, source.vertexInfo, w);
-        */
-        
+        //Another method(ANSWER):
+        boolean a,b;
+        a=addEdge(source.vertexInfo, destination.vertexInfo, w);
+        b=addEdge(destination.vertexInfo, source.vertexInfo, w);
+        return (a&&b);
+        /*Long Way:
         if (head==null)
             return false;
         if (!hasVertex(source.vertexInfo)|| !hasVertex(destination.vertexInfo))
@@ -103,6 +104,7 @@ public class WeightGraph <T extends Comparable <T>, N extends Comparable <N>>{
             sourceVertex = sourceVertex.nextVertex;
         }
         return false;
+        */
     }
     
     //Question 2

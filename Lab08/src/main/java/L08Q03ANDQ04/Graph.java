@@ -136,7 +136,7 @@ public class Graph<T extends Comparable <T>> {
     //Question 1 
     public boolean addUndirectedEdge(Vertex<T> source, Vertex <T> destination){
         
-        /*Another method:
+        /*Another method(ANSWER):
         addDirectedEdge(source.vertexInfo, destinationVertex.vertexInfo, w);
         addDirectedEdge(destinationVertex.vertexInfo, source.vertexInfo, w);
         */
