@@ -1,10 +1,14 @@
-/Lab01/target/
-/Lab02/target/
-/Lab04/target/
-/Lab05/target/
-/Lab06/target/
-/Lab07/target/
-/Lab07b/target/
-/Lab08/target/
-/LAB09B/target/
-/T10/target/
+#Ignore compiled java class files
+*.class
+# Ignore build directories (Maven/Gradle)
+target/
+build/
+# Ignore IDE specific folders and files
+.idea
+*.iml
+.vscode/
+# Ignore log files
+*.log
+# Ignore OS-generated files 
+.DS_Store
+Thumbs.db
