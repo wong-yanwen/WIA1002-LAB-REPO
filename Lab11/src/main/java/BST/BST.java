@@ -106,6 +106,10 @@ public class BST <E extends Comparable <E>>{
     
     //vi Returns the minimum value of the BST
     public E minValue(){
+        //check if BST is populated
+        if (root == null) {
+            return null; 
+        }
         TreeNode<E> current = this.root;
         
         while( current!=null && current.left!=null ){
@@ -113,9 +117,30 @@ public class BST <E extends Comparable <E>>{
         }        
         return current.element;
     }
+    /**
+     * Can be done by recursion too
+     * same concept for max
+    
+    E minValue(TreeNode<E> root) {
+        //check if BST is populated
+        if (root == null) {
+            return null; 
+        }
+        // If left child is null, root is minimum
+        if (root.left == null) return root.element;
+        
+        // Recurse on left child
+        return minValue(root.left);
+    }
+    
+    */
     
     //vii Returns the maximum value of the BST
     public E maxValue(){
+        //check if BST is populated
+        if (root == null) {
+        return null; 
+        }
         TreeNode <E> current = this.root;
         while( current!=null && current.right!=null ){
             current=current.right;
@@ -154,28 +179,67 @@ public class BST <E extends Comparable <E>>{
     //ix Delete an element from the binary tree. Return true if the element is deleted 
     //successfully, and return false if the element is not in the tree
     public boolean delete(E e){
+        //search for the node to be deleted and its parent node
+        
+        //MY ANSWER: searching for node
+        //ineficient - because traversing the tree 2 times and allocating extra memory for ArrayList
         //return false if element not in tree
+        /*
         if (this.search(e)==false){
             return false;
         }
+        
         ArrayList <TreeNode <E> > pathToE  = this.path(e);
         TreeNode<E> parent =null;
         if (pathToE.size()>1){
             parent = pathToE.get(pathToE.size()-2);
         }
         TreeNode<E> target = pathToE.getLast();
+        */
+        
+        //SAMPLE ANSWER: searching for node
+        //=========================================================
+        
+        TreeNode<E> parent = null;
+        TreeNode<E> target = root;
+        while(target!=null){
+            if (e.compareTo(target.element)<0){
+                parent=target;
+                target=target.left;
+            }else if (e.compareTo(target.element)>0){
+                parent=target;
+                target=target.right;
+            }else{
+                break;//element is in tree pointed at by current
+            }
+        }
+        
+        if (target==null)
+            return false;//element is not in tree
+        
+        
+        //=========================================================
+
+
         //case 1 :current has no left child
+        // combining cases where
+        // 1. target is a leaf
+        // 2. target has right child only
+        // right child can be "pulled up safely" to connect to parent node
         if (target.left==null ){
             //connect right child of current with parent;
             //now current is not referenced, so it is eliminated
+            // if target is a leaf node, then null is connected, same effect is achieved.
             if (parent==null){
                 root= target.right;
-            }else if (e.compareTo(target.element)<0){
+            }else if (e.compareTo(parent.element)<0){
                 parent.left=target.right;
             }else{
                 parent.right=target.right;
             }
          //case 2: current node has left child  
+         //a left child exists, we are guaranteed to find a "rightmost node in the left subtree." 
+         //This node represents the largest value that is still smaller than the target node.
         }else{
             
             TreeNode<E> parentOfRightMost =target;
@@ -190,6 +254,7 @@ public class BST <E extends Comparable <E>>{
             target.element = rightMost.element;
             //connect the parent of the right most node to the left child of rightmost node
             if (parentOfRightMost.right==rightMost){
+                // basically assigning the left child of rightmost to be parentOfRightMost rightChild
                 parentOfRightMost.right=rightMost.left;
             }else{
                 //special case: parentOfRightMost==target

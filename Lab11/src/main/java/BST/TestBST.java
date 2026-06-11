@@ -4,8 +4,6 @@
 
 package BST;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Wong Yan Wen
@@ -20,7 +18,7 @@ public class TestBST {
             System.out.print(eachEntry+" ");         
         }
         
-        System.out.print("Inorder(sorted): ");
+        System.out.print("\nInorder(sorted): ");
         bst.inorder();
         System.out.print("\nPostorder: ");
         bst.postorder();
